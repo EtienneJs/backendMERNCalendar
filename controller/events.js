@@ -23,10 +23,11 @@ const createEvent = async (req, res) => {
 
   try {
     evento.user = req.uid;
-    await evento.save();
+    const event = await evento.save();
     return res.status(201).json({
       ok: true,
       msg: "Se creo un nuevo dato",
+      event,
     });
   } catch (error) {
     console.log(error);
